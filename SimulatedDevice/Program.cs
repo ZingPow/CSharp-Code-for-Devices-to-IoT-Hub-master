@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,34 +7,6 @@ using Newtonsoft.Json;
 
 namespace SimulatedDevice
 {
-    [DataContract]
-    internal class TelemetryData
-    {
-        [DataMember]
-        internal string Time;
-
-        [DataMember]
-        internal string DeviceId;
-
-        [DataMember]
-        internal double Temperature;
-
-        [DataMember]
-        internal int LEDStatus;
-    }
-
-    class LEDStatusCommand
-    {
-        [DataMember]
-        public string time { get; set; }
-
-        [DataMember]
-        public int ledstatus { get; set; }
-
-        [DataMember]
-        public string source { get; set; }
-    }
-
     class Program
     {
         static DeviceClient deviceClient;
@@ -47,22 +16,22 @@ namespace SimulatedDevice
 
         static int ledstatus;  //0 off 1 on
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Simulated device\n");
             deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(deviceName, deviceKey), TransportType.Mqtt_WebSocket_Only);
 
-            SendDeviceToCloudMessagesAsync();
+            await SendDeviceToCloudMessagesAsync();
             
             // setup callbacks for direct methods
-            deviceClient.SetMethodHandlerAsync("DMTurnOnLED", DMTurnOnLED, null);
-            deviceClient.SetMethodHandlerAsync("DMTurnOffLED", DMTurnOffLED, null);
-            deviceClient.SetMethodHandlerAsync("DMToggleLED", DMToggleLED, null);
+            await deviceClient.SetMethodHandlerAsync("DMTurnOnLED", DMTurnOnLED, null);
+            await deviceClient.SetMethodHandlerAsync("DMTurnOffLED", DMTurnOffLED, null);
+            await deviceClient.SetMethodHandlerAsync("DMToggleLED", DMToggleLED, null);
 
-            ReceiveC2dAsync();
+            await ReceiveC2dAsync();
             Console.ReadLine();
         }
-        private static async void SendDeviceToCloudMessagesAsync()
+        static async Task SendDeviceToCloudMessagesAsync()
         {
             double minTemperature = 15;
             Random rand = new Random();
@@ -71,7 +40,7 @@ namespace SimulatedDevice
             {
                 double currentTemperature = minTemperature + rand.NextDouble() * 15;
 
-                TelemetryData telemetryDataPoint = new TelemetryData()
+                TelemetryData telemetryDataPoint = new TelemetryData
                 {
                     DeviceId = deviceName,
                     Time = DateTime.UtcNow.ToString("o"),
@@ -89,7 +58,7 @@ namespace SimulatedDevice
                 await Task.Delay(30000);
             }
         }
-        private static async void ReceiveC2dAsync()
+        static async Task ReceiveC2dAsync()
         {
             Console.WriteLine("\nReceiving cloud to device messages from service");
             while (true)
@@ -148,12 +117,12 @@ namespace SimulatedDevice
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
         }
 
-        static private void TurnOnLED()
+        static void TurnOnLED()
         {
             ledstatus = 1;
         }
 
-        static private void TurnOffLED()
+        static void TurnOffLED()
         {
             ledstatus = 0;
         }
