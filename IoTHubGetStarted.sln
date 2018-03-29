@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDeviceIdentity", "CreateDeviceIdentity\CreateDeviceIdentity.csproj", "{C9400466-B8E5-494E-9CAC-294AFC3B6B30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateDeviceIdentity", "CreateDeviceIdentity\CreateDeviceIdentity.csproj", "{C9400466-B8E5-494E-9CAC-294AFC3B6B30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadDeviceToCloudMessages", "ReadDeviceToCloudMessages\ReadDeviceToCloudMessages.csproj", "{814BC34E-E152-46B4-A0EC-8363CFB41098}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadDeviceToCloudMessages", "ReadDeviceToCloudMessages\ReadDeviceToCloudMessages.csproj", "{814BC34E-E152-46B4-A0EC-8363CFB41098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatedDevice", "SimulatedDevice\SimulatedDevice.csproj", "{ADF1961C-660F-4711-8053-93DCEF900D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimulatedDevice", "SimulatedDevice\SimulatedDevice.csproj", "{ADF1961C-660F-4711-8053-93DCEF900D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendCloudToDevice", "SendCloudToDevice\SendCloudToDevice.csproj", "{3CC88E52-5BDB-4BAD-B5F8-81DAAD9B9C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendCloudToDevice", "SendCloudToDevice\SendCloudToDevice.csproj", "{3CC88E52-5BDB-4BAD-B5F8-81DAAD9B9C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendDirectMethodCall", "SendDirectMethodCall\SendDirectMethodCall.csproj", "{BC5AC382-4FFB-4619-B7C5-BDF61AFC5F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendDirectMethodCall", "SendDirectMethodCall\SendDirectMethodCall.csproj", "{BC5AC382-4FFB-4619-B7C5-BDF61AFC5F11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,28 +23,28 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Debug|x64.ActiveCfg = Debug|x64
-		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Debug|x64.Build.0 = Debug|x64
+		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Debug|x64.Build.0 = Debug|Any CPU
 		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Release|x64.ActiveCfg = Debug|x64
-		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Release|x64.Build.0 = Debug|x64
+		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Release|x64.ActiveCfg = Release|Any CPU
+		{C9400466-B8E5-494E-9CAC-294AFC3B6B30}.Release|x64.Build.0 = Release|Any CPU
 		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Debug|x64.ActiveCfg = Debug|x64
-		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Debug|x64.Build.0 = Debug|x64
+		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Debug|x64.Build.0 = Debug|Any CPU
 		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Release|Any CPU.Build.0 = Release|Any CPU
-		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Release|x64.ActiveCfg = Debug|x64
-		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Release|x64.Build.0 = Debug|x64
+		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Release|x64.ActiveCfg = Release|Any CPU
+		{814BC34E-E152-46B4-A0EC-8363CFB41098}.Release|x64.Build.0 = Release|Any CPU
 		{ADF1961C-660F-4711-8053-93DCEF900D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADF1961C-660F-4711-8053-93DCEF900D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADF1961C-660F-4711-8053-93DCEF900D51}.Debug|x64.ActiveCfg = Debug|x64
-		{ADF1961C-660F-4711-8053-93DCEF900D51}.Debug|x64.Build.0 = Debug|x64
+		{ADF1961C-660F-4711-8053-93DCEF900D51}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ADF1961C-660F-4711-8053-93DCEF900D51}.Debug|x64.Build.0 = Debug|Any CPU
 		{ADF1961C-660F-4711-8053-93DCEF900D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADF1961C-660F-4711-8053-93DCEF900D51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADF1961C-660F-4711-8053-93DCEF900D51}.Release|x64.ActiveCfg = Debug|x64
-		{ADF1961C-660F-4711-8053-93DCEF900D51}.Release|x64.Build.0 = Debug|x64
+		{ADF1961C-660F-4711-8053-93DCEF900D51}.Release|x64.ActiveCfg = Release|Any CPU
+		{ADF1961C-660F-4711-8053-93DCEF900D51}.Release|x64.Build.0 = Release|Any CPU
 		{3CC88E52-5BDB-4BAD-B5F8-81DAAD9B9C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3CC88E52-5BDB-4BAD-B5F8-81DAAD9B9C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CC88E52-5BDB-4BAD-B5F8-81DAAD9B9C27}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -66,7 +66,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {E9F88E6B-D23F-4D4F-A931-2C1EE17118FE}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
