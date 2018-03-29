@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +13,8 @@ namespace ReadDeviceToCloudMessages
         static string connectionString = "HostName=YourIoTHub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=JustCopyTheWholeConnectionString";
         static string iotHubD2cEndpoint = "messages/events";
         static EventHubClient eventHubClient;
-        static void Main(string[] args)
+
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
             eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
@@ -23,7 +23,7 @@ namespace ReadDeviceToCloudMessages
 
             CancellationTokenSource cts = new CancellationTokenSource();
 
-            System.Console.CancelKeyPress += (s, e) =>
+            Console.CancelKeyPress += (s, e) =>
             {
                 e.Cancel = true;
                 cts.Cancel();
@@ -35,21 +35,24 @@ namespace ReadDeviceToCloudMessages
             {
                 tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
             }
-            Task.WaitAll(tasks.ToArray());
+            await Task.WhenAll(tasks.ToArray());
         }
-                    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
 
+        private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+
+        {
+            var eventHubReceiver = await eventHubClient.GetDefaultConsumerGroup().CreateReceiverAsync(partition, DateTime.UtcNow);
+            while (true)
             {
-                var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
-                while (true)
-                {
-                    if (ct.IsCancellationRequested) break;
-                    EventData eventData = await eventHubReceiver.ReceiveAsync();
-                    if (eventData == null) continue;
+                if (ct.IsCancellationRequested)
+                    break;
 
-                    string data = Encoding.UTF8.GetString(eventData.GetBytes());
-                    Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
-                }
+                EventData eventData = await eventHubReceiver.ReceiveAsync();
+                if (eventData == null) continue;
+
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
             }
         }
     }
+}

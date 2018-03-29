@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.Azure.Devices;
@@ -15,10 +12,10 @@ namespace CreateDeviceIdentity
         static string connectionString = "HostName=YourIoTHub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=JustCopyTheWholeConnectionString";
         static string deviceName = "mySimulatedDevice";
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             registryManager = RegistryManager.CreateFromConnectionString(connectionString);
-            AddDeviceAsync().Wait();
+            await AddDeviceAsync();
             Console.ReadLine();
         }
         private static async Task AddDeviceAsync()
