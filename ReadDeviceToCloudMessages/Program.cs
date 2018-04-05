@@ -39,7 +39,6 @@ namespace ReadDeviceToCloudMessages
         }
 
         private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
-
         {
             var eventHubReceiver = await eventHubClient.GetDefaultConsumerGroup().CreateReceiverAsync(partition, DateTime.UtcNow);
             while (true)
@@ -51,7 +50,7 @@ namespace ReadDeviceToCloudMessages
                 if (eventData == null) continue;
 
                 string data = Encoding.UTF8.GetString(eventData.GetBytes());
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
+                Console.WriteLine($"Message received. Partition: {partition} Data: '{data}'");
             }
         }
     }

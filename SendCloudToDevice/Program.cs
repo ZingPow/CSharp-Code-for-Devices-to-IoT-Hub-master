@@ -6,7 +6,6 @@ using Microsoft.Azure.Devices;
 
 namespace SendCloudToDevice
 {
-
     class Program
     {
         static ServiceClient serviceClient;
