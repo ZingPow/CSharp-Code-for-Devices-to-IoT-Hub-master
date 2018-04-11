@@ -9,13 +9,20 @@ namespace CreateDeviceIdentity
     class Program
     {
         static RegistryManager registryManager;
-        static string connectionString = "HostName=YourIoTHub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=JustCopyTheWholeConnectionString";
+        static string connectionString = "HostName=calgary1.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Access key here";
         static string deviceName = "mySimulatedDevice";
 
         static async Task Main(string[] args)
         {
             registryManager = RegistryManager.CreateFromConnectionString(connectionString);
-            await AddDeviceAsync();
+            try
+            {
+                await AddDeviceAsync();
+            }
+            catch(Exception ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
             Console.ReadLine();
         }
         private static async Task AddDeviceAsync()

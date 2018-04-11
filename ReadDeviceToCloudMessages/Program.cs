@@ -10,7 +10,7 @@ namespace ReadDeviceToCloudMessages
 {
     class Program
     {
-        static string connectionString = "HostName=YourIoTHub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=JustCopyTheWholeConnectionString";
+        static string connectionString = "HostName=calgary1.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Access key here";
         static string iotHubD2cEndpoint = "messages/events";
         static EventHubClient eventHubClient;
 
@@ -39,8 +39,8 @@ namespace ReadDeviceToCloudMessages
         }
 
         private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
-
         {
+            Console.WriteLine($"Listening for messages on {partition}");
             var eventHubReceiver = await eventHubClient.GetDefaultConsumerGroup().CreateReceiverAsync(partition, DateTime.UtcNow);
             while (true)
             {
@@ -51,7 +51,7 @@ namespace ReadDeviceToCloudMessages
                 if (eventData == null) continue;
 
                 string data = Encoding.UTF8.GetString(eventData.GetBytes());
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
+                Console.WriteLine($"Message received. Partition: {partition} Data: '{data}'");
             }
         }
     }

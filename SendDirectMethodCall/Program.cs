@@ -30,8 +30,8 @@ namespace SendDirectMethodCall
 
             LEDStatusCommand ledStatusCommand = new LEDStatusCommand
             {
-                time = DateTime.Now.ToString(),
-                source = "Azure Function Direct Method Call"
+                Time = DateTime.Now.ToString(),
+                Source = "Azure Function Direct Method Call"
             };
 
             CloudToDeviceMethod methodInvocation = new CloudToDeviceMethod("DMToggleLED") { ResponseTimeout = TimeSpan.FromSeconds(30) };

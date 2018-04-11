@@ -5,12 +5,12 @@ namespace SimulatedDevice
     class LEDStatusCommand
     {
         [DataMember]
-        public string time { get; set; }
+        public string Time { get; set; }
 
         [DataMember]
-        public int ledstatus { get; set; }
+        public int LedStatus { get; set; }
 
         [DataMember]
-        public string source { get; set; }
+        public string Source { get; set; }
     }
 }

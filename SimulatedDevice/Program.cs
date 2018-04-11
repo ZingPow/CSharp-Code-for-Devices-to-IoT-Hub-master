@@ -10,8 +10,8 @@ namespace SimulatedDevice
     class Program
     {
         static DeviceClient deviceClient;
-        static string iotHubUri = "YourIoTHub.azure-devices.net";
-        static string deviceKey = "CopyTheIoTHubPrimaryKeyHere";  //Primary Key
+        static string iotHubUri = "calgary1.azure-devices.net";
+        static string deviceKey = "device key here";  //Primary Key
         static string deviceName = "mySimulatedDevice";
 
         static int ledstatus;  //0 off 1 on
@@ -21,8 +21,9 @@ namespace SimulatedDevice
             Console.WriteLine("Simulated device\n");
             deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(deviceName, deviceKey), TransportType.Mqtt_WebSocket_Only);
 
-            await SendDeviceToCloudMessagesAsync();
-            
+            var sendMessageTask = new Task(async () => await SendDeviceToCloudMessagesAsync());
+            sendMessageTask.Start();
+
             // setup callbacks for direct methods
             await deviceClient.SetMethodHandlerAsync("DMTurnOnLED", DMTurnOnLED, null);
             await deviceClient.SetMethodHandlerAsync("DMTurnOffLED", DMTurnOffLED, null);
@@ -50,8 +51,7 @@ namespace SimulatedDevice
 
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.UTF8.GetBytes(messageString));
-                //message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
-
+                
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
 
