@@ -31,7 +31,7 @@ namespace IotHubNotifications
 
             foreach (var @event in events)
             {
-                log.Info($"{@event.EventType} {@event.Data}");
+                log.Info($"Event: {@event.EventType} for device ID: {((JObject)events[0].Data)["deviceId"]}");
             }
             return new JsonResult(new { result = "ok" });
         }
