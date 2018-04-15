@@ -2,8 +2,8 @@
 {
     class LEDStatusCommand
     {
-        public string time { get; set; }
-        public int ledstatus { get; set; }
-        public string source { get; set; }
+        public string Time { get; set; }
+        public int LedStatus { get; set; }
+        public string Source { get; set; }
     }
 }
