@@ -10,8 +10,9 @@ namespace SimulatedDevice
     class Program
     {
         static DeviceClient deviceClient;
-        static string iotHubUri = "YourIoTHub.azure-devices.net";
-        static string deviceKey = "CopyTheIoTHubPrimaryKeyHere";  //Primary Key
+
+        static string iotHubUri = "calgary1.azure-devices.net";
+        static string deviceKey = "device key here";  //Primary Key
         static string deviceName = "mySimulatedDevice";
 
         static int ledstatus;  //0 off 1 on
@@ -19,7 +20,7 @@ namespace SimulatedDevice
         static async Task Main(string[] args)
         {
             Console.WriteLine("Simulated device\n");
-            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(deviceName, deviceKey), TransportType.Mqtt_WebSocket_Only);
+            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(deviceName, deviceKey), TransportType.Mqtt);
 
             await SendDeviceToCloudMessagesAsync();
             
@@ -33,18 +34,36 @@ namespace SimulatedDevice
         }
         static async Task SendDeviceToCloudMessagesAsync()
         {
-            double minTemperature = 15;
+            double minTemperature = 20;
+            DateTime time;
             Random rand = new Random();
 
             while (true)
             {
-                double currentTemperature = minTemperature + rand.NextDouble() * 15;
+                time = DateTime.UtcNow;
+
+                double r = rand.NextDouble();
+
+                //randomly generate out lier data
+                if (r > .9)
+                {
+                    r = (.5 - r) * 12;
+                }
+                else
+                {
+                    r = 0;
+                }
+
+                //generate semi nice data
+                double currentTemperature = minTemperature + Math.Sin((time.Minute * 60 + time.Second) / 450.0 * Math.PI) * 3 + r;
 
                 TelemetryData telemetryDataPoint = new TelemetryData
                 {
                     DeviceId = deviceName,
-                    Time = DateTime.UtcNow.ToString("o"),
+                    Time = time.ToString("o"),
                     Temperature = currentTemperature,
+                    Latitude = 51.04522,
+                    Longitude = -114.063,
                     LEDStatus = ledstatus
                 };
 
@@ -55,7 +74,7 @@ namespace SimulatedDevice
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
 
-                await Task.Delay(30000);
+                await Task.Delay(15000);  //send data every 15 seconds so we have enough data for ML
             }
         }
         static async Task ReceiveC2dAsync()

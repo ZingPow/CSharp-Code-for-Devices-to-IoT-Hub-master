@@ -66,7 +66,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E9F88E6B-D23F-4D4F-A931-2C1EE17118FE}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {E9F88E6B-D23F-4D4F-A931-2C1EE17118FE}
 	EndGlobalSection
 EndGlobal

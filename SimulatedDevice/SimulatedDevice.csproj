@@ -14,7 +14,7 @@
     <PackageReference Include="EnterpriseLibrary.TransientFaultHandling" Version="6.0.1304.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.4" />
     <PackageReference Include="Microsoft.Azure.Amqp" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.7.0" />
+    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.7.1" />
     <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.5.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="2.0.4" />
     <PackageReference Include="Microsoft.Data.Edm" Version="5.8.3" />
@@ -28,8 +28,8 @@
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.0.1" />
     <PackageReference Include="Microsoft.Owin" Version="4.0.0" />
     <PackageReference Include="Mono.Security" Version="5.4.0.201" />
-    <PackageReference Include="NETStandard.Library" Version="2.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Owin" Version="1.0" />
     <PackageReference Include="PCLCrypto" Version="2.0.147" />
     <PackageReference Include="PInvoke.BCrypt" Version="0.5.134" />
@@ -37,7 +37,7 @@
     <PackageReference Include="PInvoke.NCrypt" Version="0.5.134" />
     <PackageReference Include="PInvoke.Windows.Core" Version="0.5.134" />
     <PackageReference Include="Validation" Version="2.4.18" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.1.0" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.1.1" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Collections" Version="4.3.0" />

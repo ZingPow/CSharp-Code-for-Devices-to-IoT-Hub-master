@@ -36,20 +36,20 @@ namespace SendCloudToDevice
 
         static async Task ReceiveFeedbackAsync()
         {
-            var feedbackReceiver = serviceClient.GetFeedbackReceiver();
+            //var feedbackReceiver = serviceClient.GetFeedbackReceiver();
 
-            Console.WriteLine("\nReceiving c2d feedback from service");
-            while (true)
-            {
-                var feedbackBatch = await feedbackReceiver.ReceiveAsync();
-                if (feedbackBatch == null) continue;
+            //Console.WriteLine("\nReceiving c2d feedback from service");
+            //while (true)
+            //{
+            //    var feedbackBatch = await feedbackReceiver.ReceiveAsync();
+            //    if (feedbackBatch == null) continue;
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Received feedback: {0}", string.Join(", ", feedbackBatch.Records.Select(f => f.StatusCode)));
-                Console.ResetColor();
+            //    Console.ForegroundColor = ConsoleColor.Yellow;
+            //    Console.WriteLine("Received feedback: {0}", string.Join(", ", feedbackBatch.Records.Select(f => f.StatusCode)));
+            //    Console.ResetColor();
 
-                await feedbackReceiver.CompleteAsync(feedbackBatch);
-            }
+            //    await feedbackReceiver.CompleteAsync(feedbackBatch);
+            //}
         }
     }
 }
