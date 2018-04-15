@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendCloudToDevice", "SendCl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendDirectMethodCall", "SendDirectMethodCall\SendDirectMethodCall.csproj", "{BC5AC382-4FFB-4619-B7C5-BDF61AFC5F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotHubNotifications", "IotHubNotificationsHandler\IotHubNotifications.csproj", "{38EECD56-C484-4A71-89EE-613DA0211F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IotHubNotifications", "IotHubNotificationsHandler\IotHubNotifications.csproj", "{38EECD56-C484-4A71-89EE-613DA0211F7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionAlert", "..\..\..\Documents\Visual Studio 2017\Projects\AzureFunctionAlert\AzureFunctionAlert\AzureFunctionAlert.csproj", "{8477FD38-C4A4-4E95-B18C-041B740B3D79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,12 +73,20 @@ Global
 		{38EECD56-C484-4A71-89EE-613DA0211F7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38EECD56-C484-4A71-89EE-613DA0211F7E}.Release|x64.ActiveCfg = Release|Any CPU
 		{38EECD56-C484-4A71-89EE-613DA0211F7E}.Release|x64.Build.0 = Release|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Debug|x64.Build.0 = Debug|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Release|x64.ActiveCfg = Release|Any CPU
+		{8477FD38-C4A4-4E95-B18C-041B740B3D79}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {E9F88E6B-D23F-4D4F-A931-2C1EE17118FE}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
