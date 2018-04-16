@@ -1,0 +1,17 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=calgary1functionapp;AccountKey=BunchOfLettersAndNumbers;EndpointSuffix=core.windows.net",
+    "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=calgary1functionapp;AccountKey=BunchOfLettersAndNumbers;EndpointSuffix=core.windows.net",
+
+    "FUNCTIONS_EXTENSION_VERSION": "~1",
+    "AlertEventHub_EVENTHUB": "Endpoint=sb://calgary1alerthub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BunchOfLettersAndNumbers;EntityPath=alerteventhub",
+    "ScmType": "None",
+    "WEBSITE_AUTH_ENABLED": "False",
+    "WEBSITE_NODE_DEFAULT_VERSION": "6.5.0",
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "DefaultEndpointsProtocol=https;AccountName=calgary1functionapp;AccountKey=BunchOfLettersAndNumbers;",
+    "WEBSITE_CONTENTSHARE": "azurefunctionalertsa849",
+    "WEBSITE_SITE_NAME": "AzureFunctionAlerts",
+    "WEBSITE_SLOT_NAME": "Production"
+  }
+}
