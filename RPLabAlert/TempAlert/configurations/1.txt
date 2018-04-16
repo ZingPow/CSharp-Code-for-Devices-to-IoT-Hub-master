@@ -1,0 +1,8 @@
+    <!-- Service Bus specific app setings for messaging connections -->
+    <!-- Go to the Shared Access Policies in the Event Hub -->
+    <add key="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://alerteventhub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=NTz/TGnG6odrppbcmYwUsMkS4xzZ6BiOiS4Xyn+JfSA=" />
+    <!-- Event Hub event hub name -->
+    <add key="Microsoft.ServiceBus.EventHubName" value="alerteventhub" />
+    <!-- Data storage account -->
+    <add key="AzureStorage.AccountName" value="wheredoesthisgo" />
+    <add key="AzureStorage.Key" value="bE9DRxFRwcKQYCds+qVTRzUxc0IeVeUactg4pWsamEfPzkjb7SGywzG8Rum4AAEsrygm5f8P20Qo+cnIzFNOCw==" />
