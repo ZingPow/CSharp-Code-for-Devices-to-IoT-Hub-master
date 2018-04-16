@@ -43,12 +43,12 @@ namespace SimulatedDevice
             {
                 time = DateTime.UtcNow;
 
-                double r = rand.NextDouble();
+                double r = 0.5 - rand.NextDouble();
 
                 //randomly generate out lier data
-                if (r > .9)
+                if (Math.Abs(r) > .45)
                 {
-                    r = (.5 - r) * 12;
+                    r = r * 12;
                 }
                 else
                 {
