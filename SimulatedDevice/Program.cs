@@ -13,7 +13,23 @@ namespace SimulatedDevice
 
         static string iotHubUri = "calgary1.azure-devices.net";
         static string deviceKey = "device key here";  //Primary Key
+
+        //Calgary Microsoft Office
+        const Double LATITUDE = 51.0448151;
+        const Double LONGITUDE = -114.0660971;
         static string deviceName = "mySimulatedDevice";
+        //Debden
+        //const Double LATITUDE = 53.5270782;
+        //const Double LONGITUDE = -106.9004616;
+        //static string deviceName = "DebdenDevice";
+        //Delia
+        //const Double LATITUDE = 51.6328305;
+        //const Double LONGITUDE = -112.3783997;
+        //static string deviceName = "DeliaDevice";
+        //Hanna (Home of Simon's favorite Band, give him 5 pennies and he'll give you a NickleBack)
+        //const Double LATITUDE = 51.6417353;
+        //const Double LONGITUDE = -111.94208;
+        //static string deviceName = "HannaDevice";
 
         static int ledstatus;  //0 off 1 on
 
@@ -69,7 +85,7 @@ namespace SimulatedDevice
                 //randomly generate out lier data
                 if (Math.Abs(r) > .45)
                 {
-                    r = r * 12;
+                    r = r * 20.0;
                 }
                 else
                 {
@@ -84,8 +100,8 @@ namespace SimulatedDevice
                     DeviceId = deviceName,
                     Time = time.ToString("o"),
                     Temperature = currentTemperature,
-                    Latitude = 51.04522,
-                    Longitude = -114.063,
+                    Latitude = LATITUDE,
+                    Longitude = LONGITUDE,
                     LEDStatus = ledstatus
                 };
 
@@ -169,14 +185,12 @@ namespace SimulatedDevice
         static void TurnOnLED()
         {
             ledstatus = 1;
-
             UpdateTwin(ledstatus);
         }
 
         static void TurnOffLED()
         {
             ledstatus = 0;
-
             UpdateTwin(ledstatus);
         }
 
