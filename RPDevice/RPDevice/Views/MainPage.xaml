@@ -1,0 +1,135 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tc="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:fcu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:cu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    xmlns:myconverters="using:RPDevice.Converters"
+    x:Class="RPDevice.Views.MainPage"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <myconverters:FillColorConverter x:Key="FillColorConverter" />
+        <converters:StringFormatConverter x:Key="StringFormatConverter"/>
+    </Page.Resources>
+    <Page.Style>
+        <StaticResource ResourceKey="PageStyle"/>
+    </Page.Style>
+    <Page.DataContext>
+        <Binding Path="MainViewModel" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+    <Grid
+        x:Name="ContentArea"
+        Margin="{StaticResource MediumLeftRightMargin}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitlePage.Margin" Value="48,0,12,7"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <TextBlock
+            x:Name="TitlePage"
+            x:Uid="Main_Title"
+            Style="{StaticResource PageTitleStyle}" />
+
+        <Grid Margin="8"
+            Grid.Row="1" 
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" >
+                    <TextBlock Text="Current Temperature" FontSize="18" />
+                    <TextBlock Text="{x:Bind Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:0.##\}, Mode=OneWay, Path=ViewModel.CurrentTemp}" Margin="7,0,7,0" FontSize="18" />
+                    <TextBlock Text="C" FontSize="18"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="LED" FontSize="18"/>
+                    <Ellipse Fill="{x:Bind Converter={StaticResource FillColorConverter}, Mode=OneWay, Path=ViewModel.LED}"  Stroke="White" Width="50" Height="50" Margin="10"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="1" Orientation="Vertical" >
+                <TextBlock Text="Statuses" FontSize="18"/>
+                <ListBox Margin="20" ItemsSource="{x:Bind Path=ViewModel.Statuses}" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <tc:RadCartesianChart x:Name="radChartHour"  Grid.Row="2"  PaletteName="DefaultDarkSelected" FontFamily="Segoe UI" Margin="0,4,0,2">
+                <tc:RadCartesianChart.Grid>
+                    <tc:CartesianChartGrid MajorLinesVisibility="XY">
+                        <tc:CartesianChartGrid.MajorXLineStyle>
+                            <Style TargetType="Line">
+                                <Setter Property="StrokeDashArray" Value="10, 2"/>
+                            </Style>
+                        </tc:CartesianChartGrid.MajorXLineStyle>
+                    </tc:CartesianChartGrid>
+                </tc:RadCartesianChart.Grid>
+                <tc:RadCartesianChart.HorizontalAxis>
+                    <tc:DateTimeContinuousAxis Title="Time" MajorStepUnit="Minute" MajorStep="10" LabelFormat="{}{0:HH:mm}"/>
+                </tc:RadCartesianChart.HorizontalAxis>
+
+                <tc:LineSeries ItemsSource="{x:Bind Path=ViewModel.DataReadings}">
+                    <tc:LineSeries.VerticalAxis>
+                        <tc:LinearAxis  Title="Temp C" MajorStep="5" Foreground="Aqua"/>
+                    </tc:LineSeries.VerticalAxis>
+                    <tc:LineSeries.CategoryBinding>
+                        <tc:PropertyNameDataPointBinding PropertyName="ReadingDateTime" />
+                    </tc:LineSeries.CategoryBinding>
+                    <tc:LineSeries.ValueBinding>
+                        <tc:PropertyNameDataPointBinding PropertyName="Temperature" />
+                    </tc:LineSeries.ValueBinding>
+                </tc:LineSeries>
+
+                <tc:LineSeries ItemsSource="{x:Bind Path=ViewModel.DataReadings}">
+                    <tc:LineSeries.VerticalAxis>
+                        <tc:LinearAxis HorizontalLocation="Right" MajorStep="1" Maximum="2" Minimum="0" Title="LED Status" Foreground="Yellow"/>
+                    </tc:LineSeries.VerticalAxis>
+                    <tc:LineSeries.CategoryBinding>
+                        <tc:PropertyNameDataPointBinding PropertyName="ReadingDateTime" />
+                    </tc:LineSeries.CategoryBinding>
+                    <tc:LineSeries.ValueBinding>
+                        <tc:PropertyNameDataPointBinding PropertyName="LED" />
+                    </tc:LineSeries.ValueBinding>
+                </tc:LineSeries>
+
+            </tc:RadCartesianChart>
+        </Grid>
+
+    </Grid>
+</Page>
